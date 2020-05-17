@@ -22,8 +22,16 @@ accounts-password@1.6.0
 session@1.2.0
 dynamic-import@0.5.2
 underscore@1.0.10
-react-meteor-data
+react-meteor-data@0.2.16
 fourseven:scss
 alanning:roles
 aldeed:autoform
 matb33:collection-hooks
+mrt:filesize
+ostrio:files
+simple:highlight.js
+ostrio:flow-router-extra
+meteorhacks:subs-manager
+ostrio:cstorage
+perak:markdown
+bootstrap

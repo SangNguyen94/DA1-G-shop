@@ -14,3 +14,4 @@ Meteor.publish(null, function () {
     this.ready()
   }
 });
+

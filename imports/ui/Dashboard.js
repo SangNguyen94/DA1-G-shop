@@ -1,7 +1,25 @@
 import React from 'react';
 import {Meteor } from 'meteor/meteor'
 import PrivateHeader from './PrivateHeader';
+import { Router,Route,Link } from 'react-router';
+import styled from 'styled-components';
 
+const StyledLink= styled(Link)`
+  background-color: #3a8bcd;
+  border-radius: 5px;
+    padding: 10px 15px;
+  display: inline-block;
+  color: #fff;
+  font-size: 10px;
+    text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: all 0.5s;
+  &:hover{
+    opacity: 0.7;
+  }
+ `;
 export default () => {
  
 
@@ -28,11 +46,17 @@ export default () => {
     
     <div>
       <PrivateHeader title="Home"/>
+      <div className="row justify-content-end">
+      <div className="col-5 ">
+        <div className="main-button" >
+        
+               
+              </div>  
+      </div>
+      </div>
       <div className="page-content">
         Dashboard page content.
-        <div className="main-button">
-                <button onClick={Meteor.call('addRoles',{roles: 'publisher'})}>Become a publisher!</button>
-              </div>  
+        
       </div>
 
     </div>

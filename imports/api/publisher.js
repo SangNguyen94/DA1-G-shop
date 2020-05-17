@@ -11,59 +11,60 @@ if (Meteor.isServer) {
     });
   });
 }
-Meteor.methods({
-    'publisher.insert'(){
-      if (!this.userId) {
-        throw new Meteor.Error('not-authorized');
-      }
+// Meteor.methods({
+//     'publisher.insert'(){
+//       if (!this.userId) {
+//         throw new Meteor.Error('not-authorized');
+//       }
 
-      return publisher.insert({
-        _id: '',
-        name:'',
-        Company:'',
-        userId: this.userId,
-        updatedAt: moment().valueOf()
-      });
-    },
-    'publisher.remove'(_id){
-      if (!this.userId) {
-        throw new Meteor.Error('not-authorized');
-      }
+//       return publisher.insert({
+//         _id: '',
+//         name:'',
+//         company:'',
+//         description:'',
+//         userId: this.userId,
+//         updatedAt: moment().valueOf()
+//       });
+//     },
+//     'publisher.remove'(_id){
+//       if (!this.userId) {
+//         throw new Meteor.Error('not-authorized');
+//       }
 
-      new SimpleSchema({
-        _id: {
-          type: String,
-          min: 1
-        }
-      }).validate({ _id });
+//       new SimpleSchema({
+//         _id: {
+//           type: String,
+//           min: 1
+//         }
+//       }).validate({ _id });
 
-      publisher.remove({ _id, userId: this.userId });
+//       publisher.remove({ _id, userId: this.userId });
 
-    },
-    'publisher.update'(_id, updates) {
-      if (!this.userId) {
-        throw new Meteor.Error('not-authorized');
-      }
+//     },
+//     'publisher.update'(_id, updates) {
+//       if (!this.userId) {
+//         throw new Meteor.Error('not-authorized');
+//       }
 
-      new SimpleSchema({
-        _id: {
-          type: String,
-          min: 1
-        }
+//       new SimpleSchema({
+//         _id: {
+//           type: String,
+//           min: 1
+//         }
 
-      }).validate({
-        _id,
-        ...updates
-      });
+//       }).validate({
+//         _id,
+//         ...updates
+//       });
 
-      publisher.update({
-        _id,
-        userId: this.userId
-      }, {
-        $set: {
-          updatedAt: moment().valueOf(),
-          ...updates
-        }
-      });
-    }
-});
+//       publisher.update({
+//         _id,
+//         userId: this.userId
+//       }, {
+//         $set: {
+//           updatedAt: moment().valueOf(),
+//           ...updates
+//         }
+//       });
+//     }
+// });

@@ -32,18 +32,18 @@ export default class PublishGames extends React.Component {
         
             <title>Publish Games</title>
         
-            <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+            <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
         
         
            
-            <link rel="stylesheet" href="../assets/css/fontawesome.css"/>
-            <link rel="stylesheet" href="../assets/css/tooplate-main.css"/>
-            <link rel="stylesheet" href="../assets/css/owl.css"/>
-            <link rel="stylesheet" href="../assets/css/flex-slider.css"/>
+            <link rel="stylesheet" href="/assets/css/fontawesome.css"/>
+            <link rel="stylesheet" href="/assets/css/tooplate-main.css"/>
+            <link rel="stylesheet" href="/assets/css/owl.css"/>
+            <link rel="stylesheet" href="/assets/css/flex-slider.css"/>
       
           
         
-          <body>
+          
             
             
             <div id="pre-header">
@@ -240,20 +240,20 @@ export default class PublishGames extends React.Component {
         
         
       
-            <script src="../vendor/jquery/jquery.min.js"></script>
-            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="/vendor/jquery/jquery.min.js"></script>
+            <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         
  
-            <script src="../assets/js/custom.js"></script>
-            <script src="../assets/js/owl.js"></script>
-            <script src="../assets/js/isotope.js"></script>
-            <script src="../assets/js/flex-slider.js"></script>
+            <script src="/assets/js/custom.js"></script>
+            <script src="/assets/js/owl.js"></script>
+            <script src="/assets/js/isotope.js"></script>
+            <script src="/assets/js/flex-slider.js"></script>
         
         
             
         
         
-          </body>
+          
         
           </div>
         

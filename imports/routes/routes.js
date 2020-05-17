@@ -6,7 +6,8 @@ import Signup from '../ui/Signup';
 import Dashboard from '../ui/Dashboard';
 import NotFound from '../ui/NotFound';
 import Login from '../ui/Login';
-
+import AddPublisher from '../ui/AddPublisher'
+import FileUpload from "../ui/FileUpload"
 const unauthenticatedPages = ['/', '/signup'];
 const authenticatedPages = ['/home'];
 const onEnterPublicPage = () => {
@@ -41,6 +42,7 @@ export const routes = (
     <Route path="/" component={Login} onEnter={onEnterPublicPage}/>
     <Route path="/signup" component={Signup} onEnter={onEnterPublicPage}/>
     <Route path="/home" component={Dashboard} onEnter={onEnterPrivatePage}/>
+    <Route path="/add-publisher" component={AddPublisher} onEnter={onEnterPrivatePage}/>
     <Route path="/publish-games" component ={PublishGames} onEnter={onEnterPublisherPage}/>
     <Route path="*" component={NotFound}/>
   </Router>
