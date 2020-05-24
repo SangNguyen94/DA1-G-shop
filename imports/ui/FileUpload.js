@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //import {UserFiles} from '../server/publications';
 import IndividualFile from './FileIndividualFile.js';
-export const UserFiles = new FilesCollection({collectionName: 'userfiles'});
+import {UserFiles} from '../Ser/UserFiles';
 
 //const debug = require('debug')('demo:file');
 const Dropzone = require('react-dropzone');
@@ -32,9 +32,12 @@ export default class FileUploadComponent extends Component {
       var file = e.currentTarget.files[0];
 
       if (file) {
-        let uploadInstance = UserFiles.insert({
+        let uploadInstance;
+        if(self.props.id){
+         uploadInstance = UserFiles.insert({
           file: file,
           meta: {
+            id:self.props.id,
             locator: self.props.fileLocator,
             userId: Meteor.userId() // Optional, used to check on server for file tampering
           },
@@ -42,6 +45,20 @@ export default class FileUploadComponent extends Component {
           chunkSize: 'dynamic',
           allowWebWorkers: true // If you see issues with uploads, change this to false
         }, false)
+      }
+        else{
+           uploadInstance = UserFiles.insert({
+            file: file,
+            meta: {
+              
+              locator: self.props.fileLocator,
+              userId: Meteor.userId() // Optional, used to check on server for file tampering
+            },
+            streams: 'dynamic',
+            chunkSize: 'dynamic',
+            allowWebWorkers: true // If you see issues with uploads, change this to false
+          }, false)
+        }
 
         self.setState({
           uploading: uploadInstance, // Keep track of this instance to use below
@@ -138,7 +155,7 @@ export default class FileUploadComponent extends Component {
         <div className="row">
           <div className="col-md-12">
               
-              <p>Upload New File:</p>
+              <p>Upload your game thumbnail</p>
               <div className="custom-file">
               <input name="file"  type="file" className="custom-file-input" id="fileInput" disabled={this.state.inProgress} ref="fileinput" onChange={this.uploadIt}  />
                 <label className="custom-file-label" htmlFor="fileInput">Choose file</label>
@@ -169,9 +186,10 @@ export default class FileUploadComponent extends Component {
     else return <div>Loading file list</div>;
   }
 }
+FileUploadComponent.propTypes = {
+  id:PropTypes.string,
+};
 
-//
-// This is the HOC - included in this file just for convenience, but usually kept
-// in a separate file to provide separation of concerns.
-//
+
+
 

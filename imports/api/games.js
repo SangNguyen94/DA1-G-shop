@@ -6,9 +6,7 @@ import SimpleSchema from 'simpl-schema';
 export const games= new Mongo.Collection('games');
 if (Meteor.isServer) {
   Meteor.publish('games', function() {
-    return games.find({
-      userId: this.userId
-    });
+    return games.find({});
   });
 }
 // Meteor.methods({

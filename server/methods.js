@@ -67,14 +67,15 @@ Meteor.methods({
 });
 //GamesList
 Meteor.methods({
-    'gamesList.insert'() {
+    'gamesList.insert'(gamesID) {
+      check(publishers,Boolean);
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');
       }
   
       return gamesList.insert({
-        _id:'',
-        gamesID: '',
+        _id:shortid.generate(),
+        gamesID: gamesID,
         userId: this.userId,
         updatedAt: moment().valueOf()
       });
@@ -123,15 +124,18 @@ Meteor.methods({
   
 //Games
 Meteor.methods({
-    'games.insert'(){
+    'games.insert'(_id,name,tags,price,sales){
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');
       }
 
       return games.insert({
-        _id: '',
-        name:'',
-        tags:'',
+        _id: _id,
+        name:name,
+        tags:tags,
+        sale:sales,
+        price:Number(price),
+        bought:'',
         userId: this.userId,
         updatedAt: moment().valueOf()
       });
@@ -176,5 +180,27 @@ Meteor.methods({
           ...updates
         }
       });
-    }
+      
+    },
+    'games.buy'(_id)
+      {
+        if(!this.userId)
+        {
+          throw new Meteor.Error('pleas log in');
+        }
+        new SimpleSchema({
+          _id: {
+            type: String,
+            min: 1
+          }
+  
+        }).validate({
+          _id
+        });
+        games.update({_id},{
+          $push:{
+            bought:this.userId
+          }
+        });
+      }
 });

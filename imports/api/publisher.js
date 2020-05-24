@@ -5,7 +5,7 @@ import SimpleSchema from 'simpl-schema';
 
 export const publisher = new Mongo.Collection('publisher');
 if (Meteor.isServer) {
-  Meteor.publish('publisher', function() {
+  Meteor.publish('publisher.user', function() {
     return publisher.find({
       userId: this.userId
     });

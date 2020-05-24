@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import SimpleSchema from 'simpl-schema';
-
+import shortID from 'shortid';
 export const gamesList = new Mongo.Collection('gamesList');
 
 if (Meteor.isServer) {

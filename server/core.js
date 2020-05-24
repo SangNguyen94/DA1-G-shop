@@ -1,6 +1,6 @@
-import '/imports/server/files.collection.js';
-import '/imports/server/image-processing.js';
-import '/imports/server/methods.js';
-import '/imports/server/publications.js';
-import '/imports/server/service-configurations.js';
-import '/imports/server/spiderable.js';
+import '/imports/Ser/files.collection.js';
+import '/imports/Ser/image-processing.js';
+import '/imports/Ser/methods.js';
+import '/imports/Ser/publications.js';
+import '/imports/Ser/service-configurations.js';
+import '/imports/Ser/spiderable.js';

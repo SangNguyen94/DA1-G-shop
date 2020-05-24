@@ -2,7 +2,8 @@ import { check }       from 'meteor/check';
 import { Meteor }      from 'meteor/meteor';
 import { Collections } from '/imports/lib/core.js';
 import { FilesCollection } from 'meteor/ostrio:files';
-import {UserFiles} from '../ui/FileUpload'
+import {UserFiles} from '../Ser/UserFiles'
+import { GameFiles } from './GameFiles';
 
 
 
@@ -15,6 +16,16 @@ Meteor.publish('files.all',function(){
   } 
 
   return UserFiles.find(selector).cursor;
+})
+Meteor.publish('GF.all',function(){
+  let selector;
+  if (this.userId) {
+    selector = {
+     userId: this.userId
+    };
+  } 
+
+  return GameFiles.find(selector).cursor;
 })
 
 

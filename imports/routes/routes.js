@@ -1,49 +1,57 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory,DefaultRoute } from 'react-router';
 import PublishGames from '../ui/PublishGames';
 import Signup from '../ui/Signup';
-import Dashboard from '../ui/Dashboard';
+
 import NotFound from '../ui/NotFound';
 import Login from '../ui/Login';
 import AddPublisher from '../ui/AddPublisher'
+import Hometempt from '../ui/Hometempt'
 import FileUpload from "../ui/FileUpload"
-const unauthenticatedPages = ['/', '/signup'];
-const authenticatedPages = ['/home'];
+import AddGames from '../ui/AddGames'
+
+import DashBoardContainer from '../ui/DashBoardContainer';
+const unauthenticatedPages = ['/', '/signup','/login'];
+const authenticatedPages = ['/add-publisher','/publish-games','/logged'];
+
 const onEnterPublicPage = () => {
   if (Meteor.userId()) {
-    browserHistory.replace('/home');
+    browserHistory.replace('/');
   }
 };
 const onEnterPrivatePage = () => {
   if (!Meteor.userId()) {
-    browserHistory.replace('/');
+    browserHistory.replace('/login');
   }
 };
 const onEnterPublisherPage = () =>{
-  if(!Meteor.userId()||!Roles.userIsInRole(Meteor.userId(),'publisher')){
-    browserHistory.replace('/');
-  }
+ 
 
 }
 export const onAuthChange = (isAuthenticated) => {
   const pathname = browserHistory.getCurrentLocation().pathname;
   const isUnauthenticatedPage = unauthenticatedPages.includes(pathname);
   const isAuthenticatedPage = authenticatedPages.includes(pathname);
-
+  
   if (isUnauthenticatedPage && isAuthenticated) {
-    browserHistory.replace('/home');
+    browserHistory.replace('/logged');
   } else if (isAuthenticatedPage && !isAuthenticated) {
     browserHistory.replace('/');
   }
 };
 export const routes = (
   <Router history={browserHistory}>
-    <Route path="/" component={Login} onEnter={onEnterPublicPage}/>
-    <Route path="/signup" component={Signup} onEnter={onEnterPublicPage}/>
-    <Route path="/home" component={Dashboard} onEnter={onEnterPrivatePage}/>
+    
+    <Route path="/login" component={Login} />
+    <Route path="/signup" component={Signup} />
+    <Route path="/" component={DashBoardContainer}/>
+    <Route path='/logged' component={DashBoardContainer}/>
+    <Route path='/add-games' component={AddGames} onEnter={onEnterPublisherPage}/>
+    <Route path="/temp" component={Hometempt} onEnter={onEnterPrivatePage}/>
     <Route path="/add-publisher" component={AddPublisher} onEnter={onEnterPrivatePage}/>
     <Route path="/publish-games" component ={PublishGames} onEnter={onEnterPublisherPage}/>
     <Route path="*" component={NotFound}/>
+    
   </Router>
 );

@@ -5,10 +5,11 @@ import { Session } from 'meteor/session';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 //import 'bootstrap/dist/css/bootstrap-theme.css';
-import { routes, onAuthChange } from '../imports/routes/routes';
+import { routes, onAuthChange,meteorID } from '../imports/routes/routes';
 import '../imports/startup/simple-schema-configuration.js';
-
+ 
 Tracker.autorun(() => {
+   
   const isAuthenticated = !!Meteor.userId();
   onAuthChange(isAuthenticated);
 });
@@ -16,3 +17,4 @@ Tracker.autorun(() => {
 Meteor.startup(() => {
   ReactDOM.render(routes, document.getElementById('app'));
 });
+

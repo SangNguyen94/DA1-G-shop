@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import {FileUploadComponent} from './FileUpload'
 import { Router, Route, browserHistory } from 'react-router';
 import FileUploadContainer from '../routes/FileUploadContainer';
+import PrivateHeader from './PrivateHeader';
 export default class AddPublisher extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ export default class AddPublisher extends React.Component {
         
       });
     
-    browserHistory.push('/home');
+    browserHistory.push('/logged');
 
 
 }
@@ -40,12 +41,12 @@ export default class AddPublisher extends React.Component {
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
             <meta name="description" content=""/>
             <meta name="author" content=""/>
+
             <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet"/>
-        
+
             <title>Add publisher</title>
-        
+
             <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-        
         
            
             <link rel="stylesheet" href="/assets/css/fontawesome.css"/>
@@ -53,50 +54,19 @@ export default class AddPublisher extends React.Component {
             <link rel="stylesheet" href="/assets/css/owl.css"/>
             <link rel="stylesheet" href="/assets/css/flex-slider.css"/>
       
-          
-        
-          
-            
-            
+            <PrivateHeader >
+
+            </PrivateHeader>
             <div id="pre-header">
-              <div className="container">
-                <div className="row">
+              
+                
                   <div className="col-md-12">
                     <span>Welcome game publisher</span>
                   </div>
-                </div>
-              </div>
+                
+              
             </div>
         
-          
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-              <div className="container">
-                <a className="navbar-brand" href="#"><img src="assets/images/header-logo.png" alt=""/></a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                  <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarResponsive">
-                  <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                      <a className="nav-link" >Home</a>
-                      <Link to='/home'></Link>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="products.html">Products
-                        <span className="sr-only">(current)</span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="about.html">About Us</a>
-                    </li>
-                    <li className="nav-item active">
-                      <a className="nav-link" href="contact.html">Contact Us</a>
-                      <span className="sr-only">(current)</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
         
              
              
@@ -140,7 +110,7 @@ export default class AddPublisher extends React.Component {
                             </div>
                             <div className="col-md-12">
                               <fieldset>
-                                <button type="submit" id="form-submit" className="button">Become a Publisher!</button>
+                                <button type="submit" id="form-submit" className="main-button button">Become a Publisher!</button>
                               </fieldset>
                             </div>
                             <div className="col-md-12">
@@ -165,7 +135,7 @@ export default class AddPublisher extends React.Component {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="logo">
-                      <img src="assets/images/header-logo.png" alt=""/>
+                      <img src="/brand.png" alt=""/>
                     </div>
                   </div>
                   <div className="col-md-12">
@@ -200,9 +170,7 @@ export default class AddPublisher extends React.Component {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="copyright-text">
-                      <p>Copyright &copy; Nguyen Quoc Nam Sang
-                        
-                        - Design: <a rel="nofollow" href="https://www.facebook.com/">SangNguyen</a></p>
+                     
                     </div>
                   </div>
                 </div>

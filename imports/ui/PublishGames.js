@@ -24,7 +24,7 @@ export default class PublishGames extends React.Component {
         <div>  
           
         
-            <meta charset="utf-8"/>
+            <meta charSet="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
             <meta name="description" content=""/>
             <meta name="author" content=""/>
@@ -47,9 +47,9 @@ export default class PublishGames extends React.Component {
             
             
             <div id="pre-header">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
                     <span>Welcome game publisher</span>
                   </div>
                 </div>
@@ -57,28 +57,28 @@ export default class PublishGames extends React.Component {
             </div>
         
           
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-              <div class="container">
-                <a class="navbar-brand" href="#"><img src="assets/images/header-logo.png" alt=""/></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+              <div className="container">
+                <a className="navbar-brand" href="#"><img src="assets/images/header-logo.png" alt=""/></a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="index.html">Home</a>
+                <div className="collapse navbar-collapse" id="navbarResponsive">
+                  <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                      <a className="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="products.html">Products
-                        <span class="sr-only">(current)</span>
+                    <li className="nav-item">
+                      <a className="nav-link" href="products.html">Products
+                        <span className="sr-only">(current)</span>
                       </a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="about.html">About Us</a>
+                    <li className="nav-item">
+                      <a className="nav-link" href="about.html">About Us</a>
                     </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="contact.html">Contact Us</a>
-                      <span class="sr-only">(current)</span>
+                    <li className="nav-item active">
+                      <a className="nav-link" href="contact.html">Contact Us</a>
+                      <span className="sr-only">(current)</span>
                     </li>
                   </ul>
                 </div>
@@ -87,55 +87,55 @@ export default class PublishGames extends React.Component {
         
              
              
-            <div class="contact-page">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="section-heading">
-                      <div class="line-dec"></div>
+            <div className="contact-page">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="section-heading">
+                      <div className="line-dec"></div>
                       <h1>Contact Us</h1>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                     <div >
                             
         
                       
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="right-content">
-                      <div class="container">
+                  <div className="col-md-6">
+                    <div className="right-content">
+                      <div className="container">
                         <form id="contact" action="" method="post">
-                          <div class="row">
-                            <div class="col-md-6">
+                          <div className="row">
+                            <div className="col-md-6">
                               <fieldset>
-                                <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required=""/>
+                                <input name="name" type="text" className="form-control" id="name" placeholder="Your name..." required=""/>
                               </fieldset>
                             </div>
-                            <div class="col-md-6">
+                            <div className="col-md-6">
                               <fieldset>
-                                <input name="email" type="text" class="form-control" id="email" placeholder="Your email..." required=""/>
+                                <input name="email" type="text" className="form-control" id="email" placeholder="Your email..." required=""/>
                               </fieldset>
                             </div>
-                            <div class="col-md-12">
+                            <div className="col-md-12">
                               <fieldset>
-                                <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..." required=""/>
+                                <input name="subject" type="text" className="form-control" id="subject" placeholder="Subject..." required=""/>
                               </fieldset>
                             </div>
-                                <div class="col-md-12">
+                                <div className="col-md-12">
                                 <fieldset>
-                                 <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                                 <textarea name="message" rows="6" className="form-control" id="message" placeholder="Your message..." required=""></textarea>
                                 </fieldset>
                             </div>
-                            <div class="col-md-12">
+                            <div className="col-md-12">
                               <fieldset>
-                                <button type="submit" id="form-submit" class="button">Send Message</button>
+                                <button type="submit" id="form-submit" className="button">Send Message</button>
                               </fieldset>
                             </div>
-                            <div class="col-md-12">
-                              <div class="share">
-                                <h6>You can also keep in touch on: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span></h6>
+                            <div className="col-md-12">
+                              <div className="share">
+                                <h6>You can also keep in touch on: <span><a href="#"><i className="fa fa-facebook"></i></a><a href="#"><i className="fa fa-linkedin"></i></a><a href="#"><i className="fa fa-twitter"></i></a></span></h6>
                               </div>
                             </div>
                           </div>
@@ -147,32 +147,32 @@ export default class PublishGames extends React.Component {
               </div>
             </div>
            
-            <div class="subscribe-form">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="section-heading">
-                      <div class="line-dec"></div>
+            <div className="subscribe-form">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="section-heading">
+                      <div className="line-dec"></div>
                       <h1>Subscribe on PIXIE now!</h1>
                     </div>
                   </div>
-                  <div class="col-md-8 offset-md-2">
-                    <div class="main-content">
+                  <div className="col-md-8 offset-md-2">
+                    <div className="main-content">
                       <p>Godard four dollar toast prism, authentic heirloom raw denim messenger bag gochujang put a bird on it celiac readymade vice.</p>
-                      <div class="container">
+                      <div className="container">
                         <form id="subscribe" action="" method="get">
-                          <div class="row">
-                            <div class="col-md-7">
+                          <div className="row">
+                            <div className="col-md-7">
                               <fieldset>
-                                <input name="email" type="text" class="form-control" id="email" 
+                                <input name="email" type="text" className="form-control" id="email" 
                                 onfocus="if(this.value == 'Your Email...') { this.value = ''; }" 
                                 onBlur="if(this.value == '') { this.value = 'Your Email...';}"
                                 value="Your Email..." required=""/>
                               </fieldset>
                             </div>
-                            <div class="col-md-5">
+                            <div className="col-md-5">
                               <fieldset>
-                                <button type="submit" id="form-submit" class="button">Subscribe Now!</button>
+                                <button type="submit" id="form-submit" className="button">Subscribe Now!</button>
                               </fieldset>
                             </div>
                           </div>
@@ -188,16 +188,16 @@ export default class PublishGames extends React.Component {
         
             
             
-            <div class="footer">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="logo">
+            <div className="footer">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="logo">
                       <img src="assets/images/header-logo.png" alt=""/>
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <div class="footer-menu">
+                  <div className="col-md-12">
+                    <div className="footer-menu">
                       <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Help</a></li>
@@ -207,13 +207,13 @@ export default class PublishGames extends React.Component {
                       </ul>
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <div class="social-icons">
+                  <div className="col-md-12">
+                    <div className="social-icons">
                       <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i className="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i className="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i className="fa fa-rss"></i></a></li>
                       </ul>
                     </div>
                   </div>
@@ -223,11 +223,11 @@ export default class PublishGames extends React.Component {
           
         
         
-            <div class="sub-footer">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="copyright-text">
+            <div className="sub-footer">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="copyright-text">
                       <p>Copyright &copy; Nguyen Quoc Nam Sang
                         
                         - Design: <a rel="nofollow" href="https://www.facebook.com/">SangNguyen</a></p>

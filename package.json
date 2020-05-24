@@ -21,7 +21,7 @@
     "cdn"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.9.2",
+    "@babel/runtime": "^7.9.6",
     "aws-sdk": "^2.678.0",
     "babel-runtime": "6.18.0",
     "bcrypt": "^4.0.1",
@@ -31,23 +31,24 @@
     "core-js": "^3.6.5",
     "dropbox": "^0.10.3",
     "fs-extra": "^9.0.0",
+    "fs.realpath": "^1.0.0",
     "gm": "^1.23.1",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
     "meteor-node-stubs": "~0.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.25.3",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-dropzone": "^3.0.0",
-    "react-router": "^3.0.0",
+    "react-dropzone": "^3.13.4",
+    "react-router": "^3.2.6",
     "request": "^2.88.2",
     "shortid": "^2.2.15",
     "simpl-schema": "0.0.3",
-    "styled-components": "^3.2.1"
+    "styled-components": "^3.4.10"
   },
   "engines": {
-    "node": "4.6.2"
+    "node": "12.16.1"
   },
   "devDependencies": {
     "browserslist": "^4.12.0",
