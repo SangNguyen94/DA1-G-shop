@@ -296,7 +296,8 @@ textarea.input {
   border: none;
   border-radius: 0px;
   padding: 15px 0px;
-  margin: 0;
+  margin: 15px;
+  display: block;
 }
 
 .breadcrumb>.active {
@@ -306,7 +307,10 @@ textarea.input {
 .breadcrumb>li+li:before {
   color: #DADADA;
 }
-
+.breadcrumb>li{
+  padding: 5px;
+  margin: 5px;
+}
 /*=========================================================
 	02 -> HEADER
 ===========================================================*/
@@ -847,6 +851,19 @@ textarea.input {
 }
 
 .product .product-label>span {
+  position: relative;
+  display: inline-block;
+  padding: 5px 15px;
+  font-weight: 700;
+  color: #FFF;
+  background-color: #30323A;
+  z-index: 22;
+}
+
+.product-label>span.sale {
+  background-color: #3a8bcd;
+}
+ .product-label>span {
   position: relative;
   display: inline-block;
   padding: 5px 15px;

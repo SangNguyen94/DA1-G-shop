@@ -8,6 +8,9 @@ if (Meteor.isServer) {
   Meteor.publish('games', function() {
     return games.find({});
   });
+  Meteor.publish('games.bought', function() {
+    return games.find({bought:this.userId});
+  });
 }
 // Meteor.methods({
 //     'games.insert'(){

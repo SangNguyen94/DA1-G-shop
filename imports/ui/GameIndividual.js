@@ -1,51 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import {browserHistory} from 'react-router';
 class GameIndividual extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            games:this.props.gameId,
         };
 
-        this.GFremoveFile = this.GFremoveFile.bind(this);
-        this.GFrenameFile = this.GFrenameFile.bind(this);
-
+      
     }
 
 
 
 
-    GFremoveFile() {
-        let conf = confirm('Are you sure you want to delete the file?') || false;
-        if (conf == true) {
-            Meteor.call('GFRemoveFile', this.props.fileId, function (err, res) {
-                if (err)
-                    console.log(err);
-            })
-        }
-    }
-
-    GFrenameFile() {
-
-        let validName = /[^a-zA-Z0-9 \.:\+()\-_%!&]/gi;
-        let prompt = window.prompt('New file name?', this.props.fileName);
-
-        // Replace any non valid characters, also do this on the server
-        if (prompt) {
-            prompt = prompt.replace(validName, '-');
-            prompt.trim();
-        }
-
-        if (!_.isEmpty(prompt)) {
-            Meteor.call('GFRenameFile', this.props.fileId, prompt, function (err, res) {
-                if (err)
-                    console.log(err);
-            })
-        }
-    }
-
+   
     render() {
+        let game=this.props.gameId;
         if(this.props.gameSale>0)
         {
             return <div className="">
@@ -98,7 +70,7 @@ class GameIndividual extends Component {
                             <span>New</span>
                             <span className="sale">-{this.props.gameSale}%</span>
                         </div>
-                        <button className="main-btn quick-view"><i className="fa fa-search-plus"></i>View details</button>
+                        <button className="main-btn quick-view" onClick={()=>browserHistory.push('/view-game-details/'+this.state.games)}><i className="fa fa-search-plus"></i>View details</button>
                         <img src={this.props.gameUrl} alt={this.props.gameName} />
                     </div>
                     <div className="product-body">
@@ -165,7 +137,7 @@ class GameIndividual extends Component {
                             <span>New</span>
                             
                         </div>
-                        <button className="main-btn quick-view"><i className="fa fa-search-plus"></i>View details</button>
+                        <button className="main-btn quick-view" onClick={()=>browserHistory.push('/view-game-details/'+this.state.games)}><i className="fa fa-search-plus"></i>View details</button>
                         <img src={this.props.gameUrl} alt={this.props.gameName} />
                     </div>
                     <div className="product-body">
@@ -194,7 +166,7 @@ class GameIndividual extends Component {
 GameIndividual.propTypes = {
     gameName: PropTypes.string.isRequired,
     gamePrice: PropTypes.number.isRequired,
-    gameSale: PropTypes.string,
+    gameSale: PropTypes.number,
     gameUrl:PropTypes.string,
     gameId: PropTypes.string.isRequired
 }

@@ -1,6 +1,10 @@
-<<<<<<< HEAD
 import { Meteor } from 'meteor/meteor';
 import ReactDOM from 'react-dom';
+import React from 'react';
+import {createStore, combineReducer} from 'redux';
+import {Provider} from 'react-redux';
+import {Router,Route,browserHistory} from 'react-router';
+
 import { Tracker } from 'meteor/tracker';
 import { Session } from 'meteor/session';
 import 'bootstrap';
@@ -14,21 +18,9 @@ Tracker.autorun(() => {
   const isAuthenticated = !!Meteor.userId();
   onAuthChange(isAuthenticated);
 });
+// Add the reducer to your store on the `routing` key
 
 Meteor.startup(() => {
   ReactDOM.render(routes, document.getElementById('app'));
 });
 
-=======
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
-import {Items} from './../imports/API/item';
-import {Tracker} from 'meteor/tracker';
-Tracker.autorun(()=>{
-  console.log('Items list',Items.find().fetch());
-});
-setTimeout(()=>{
-
-},1000);
-import './main.html';
->>>>>>> 42a8b68d5aa6f2b27842834533303a6f8711c8f6

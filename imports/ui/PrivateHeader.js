@@ -140,6 +140,7 @@ class PrivateHeader extends Component {
           <link rel="stylesheet" href="/assets/css/tooplate-main.css"/>
           <link rel="stylesheet" href="/assets/css/owl.css"/>
           <link rel="stylesheet" href="/assets/css/flex-slider.css"/>
+       
     
           <nav className="navbar navbar-expand-sm navbar-inverse flex-nowrap justify-content-center">
           <span className="navbar-brand w-50 "  href="#">

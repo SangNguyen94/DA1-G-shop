@@ -10,6 +10,11 @@ if (Meteor.isServer) {
       userId: this.userId
     });
   });
+  Meteor.publish('publisher', function() {
+    return publisher.find({
+      
+    });
+  });
 }
 // Meteor.methods({
 //     'publisher.insert'(){

@@ -13,9 +13,10 @@ export default class AddGames extends React.Component {
         super(props);
         this.state = {
             error: '',
-            id: shortid.generate()
+            id: shortid.generate(),
+            
         };
-
+        console.log(this.props);
 
     }
     onSubmit(e) {
@@ -25,16 +26,20 @@ export default class AddGames extends React.Component {
         let gtags = this.refs.gtags.value.trim();
         let gprice = this.refs.gprice.value.trim();
         let gsale =this.refs.sale.value;
-        Meteor.call('games.insert', this.state.id, gname, gtags, gprice, gsale, (err, res) => {
+        let gdescr= this.refs.gdescr.value.trim();
+        Meteor.call('games.insert', this.state.id, gname, gtags, gprice, gsale,gdescr,this.props.isPub[0].company, (err, res) => {
             if (err) {
                 
                 alert(err);
+            }
+            else{
+                browserHistory.push('/logged');
             }
 
 
         });
 
-        browserHistory.push('/logged');
+        
 
 
     }
@@ -111,10 +116,15 @@ export default class AddGames extends React.Component {
                                                         <input name="CompanyName" type="text" ref="gname" className="form-control" id="email" placeholder="Game name" required />
                                                     </fieldset>
                                                 </div>
+                                                <div className="col-md-6">
+                                                    <fieldset>
+                                                        <input name="CompayName" type="text" ref="gtags" className="form-control" id="email" placeholder="Game tags" required />
+                                                    </fieldset>
+                                                </div>
 
                                                 <div className="col-md-6">
                                                     <fieldset>
-                                                        <textarea name="Description" rows="6" ref="gtags" className="form-control" id="message" placeholder="Game tags" required></textarea>
+                                                        <textarea name="Description" rows="6" ref="gdescr" className="form-control" id="message" placeholder="Game description" required></textarea>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-md-6">
@@ -220,3 +230,4 @@ export default class AddGames extends React.Component {
     );
   }
 }
+

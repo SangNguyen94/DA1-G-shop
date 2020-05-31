@@ -6,16 +6,16 @@ import GameFileUploadComponent from './GameFileUpload';
 import {UserFiles} from '../Ser/UserFiles';
 import {GameFiles} from '../Ser/GameFiles'
 import {publisher} from '../api/publisher'
-import DashBoard from './Dashboard'
- const DashBoardContainer = withTracker( ( props ) => {
-   console.log(this.props);
+
+import AddGames from './AddGames';
+ const AddGamesContainer = withTracker( ( props ) => {
   const filesHandle = Meteor.subscribe('publisher.user');
   const docsReadyYet = filesHandle.ready();
-  const isPub = publisher.find({userID:this.userID}).fetch();
+  const isPub = publisher.find().fetch();
 
   return {
     docsReadyYet,
     isPub
   };
-})(DashBoard);
-export default DashBoardContainer;
+})(AddGames);
+export default AddGamesContainer;

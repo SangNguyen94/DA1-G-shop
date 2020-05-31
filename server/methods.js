@@ -124,7 +124,7 @@ Meteor.methods({
   
 //Games
 Meteor.methods({
-    'games.insert'(_id,name,tags,price,sales){
+    'games.insert'(_id,name,tags,price,sales,descr,pubCompany){
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');
       }
@@ -133,8 +133,10 @@ Meteor.methods({
         _id: _id,
         name:name,
         tags:tags,
-        sale:sales,
+        sale:Number(sales),
         price:Number(price),
+        description:descr,
+        company:pubCompany,
         bought:'',
         userId: this.userId,
         updatedAt: moment().valueOf()
