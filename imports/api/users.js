@@ -4,13 +4,16 @@ import { Accounts } from 'meteor/accounts-base';
 
 Accounts.validateNewUser((user) => {
   const email = user.emails[0].address;
-
+  const profile=user.profile;
   new SimpleSchema({
     email: {
       type: String,
       regEx: SimpleSchema.RegEx.Email
     }
-  }).validate({ email });
+
+  }).validate({
+    email,
+  });
 
   return true;
 });
