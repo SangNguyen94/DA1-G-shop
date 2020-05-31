@@ -7,7 +7,7 @@ import { GameFiles } from './GameFiles';
 
 
 
-Meteor.publish('files.all',function(){
+Meteor.publish('files.avatar',function(){
   let selector;
   if (this.userId) {
     selector = {
@@ -17,6 +17,9 @@ Meteor.publish('files.all',function(){
 
   return UserFiles.find(selector).cursor;
 })
+Meteor.publish('files.all',function(){
+  return UserFiles.find({}).cursor;
+})
 Meteor.publish('GF.all',function(){
   let selector;
   if (this.userId) {
@@ -25,6 +28,16 @@ Meteor.publish('GF.all',function(){
     };
   } 
 
+  return GameFiles.find(selector).cursor;
+})
+Meteor.publish('GF.bought',function(){
+  let selector;
+  if (this.userId) {
+    selector = {
+     'meta.bought': this.userId
+    };
+  } 
+  
   return GameFiles.find(selector).cursor;
 })
 

@@ -69,7 +69,7 @@ export default class DashBoard extends Component {
                <p>Press the button below to add games to our collection and publish them with <strong>full privilege</strong> included. 
                <br></br>Please tell your friends about <a rel="nofollow" href="">G-shop</a> Thank you. Photo credit goes to <a rel="nofollow" href="https://bethesda.net/game/doom">Doom eternal</a>.</p>
                <div className="main-button">
-                 <a href=""  onClick={()=>browserHistory.push('/add-games')}>Add your games now!</a>
+                 <a href=""  onClick={()=>browserHistory.push('/add-games',{company:this.props.isPub.company})}>Add your games now!</a>
                </div>
              </div>
            </div>
