@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor'
 import shortid from 'shortid';
-import GameFileUploadContainer from '../ui/GameFileUploadContainer'
+import GameFileUploadContainer from './HOC/GameFileUploadContainer'
 import { FileUploadComponent } from './FileUpload'
 import { Router, Route, browserHistory } from 'react-router';
 import FileUploadContainer from '../routes/FileUploadContainer';
@@ -130,7 +130,7 @@ export default class AddGames extends React.Component {
                                                 <div className="col-md-6">
                                                     <fieldset>
                                                     <label htmlFor="sale">Sale percentage (between 0 and 100):</label>
-                                                    <input type="number" id="sale" name="sale" ref="sale" min="0" max="100"/>
+                                                    <input type="number" id="sale" name="sale" ref="sale" min="0" max="100" required/>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-md-6">

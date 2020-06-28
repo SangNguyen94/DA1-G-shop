@@ -33,7 +33,7 @@ export default class Signup extends React.Component {
     });
   
 
-
+    Meteor.call('cart.insert');
 
     //  Meteor.call('addRole',typeOfUser);
 

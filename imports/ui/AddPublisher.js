@@ -7,6 +7,7 @@ import {FileUploadComponent} from './FileUpload'
 import { Router, Route, browserHistory } from 'react-router';
 import FileUploadContainer from '../routes/FileUploadContainer';
 import PrivateHeader from './PrivateHeader';
+import AvatarUploadContainer from './AvatarUploadComponent';
 export default class AddPublisher extends React.Component {
   constructor(props) {
     super(props);
@@ -21,15 +22,14 @@ export default class AddPublisher extends React.Component {
     let pubCompany= this.refs.company.value.trim();
     let descr= this.refs.descr.value.trim();
     Meteor.call('publisher.insert',pubName,pubCompany,descr,(err, res) => {
-        if (err) {
-          alert(err);
-        } 
-          
-        
-      });
-    
-    browserHistory.push('/logged');
-
+      if (err) {
+        alert(err);
+      } 
+      else{
+          browserHistory.push('/logged');
+      }
+    });
+  
 
 }
   render() {
@@ -80,7 +80,9 @@ export default class AddPublisher extends React.Component {
                     </div>
                   </div>
                   <div className="col-md-6">
-                   <FileUploadContainer></FileUploadContainer>
+                   <AvatarUploadContainer>
+                     
+                   </AvatarUploadContainer>
                     <div >
                             
         

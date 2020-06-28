@@ -8,7 +8,9 @@ import {publisher} from '../api/publisher'
 import {Meteor} from "meteor/meteor"
 import { Tracker } from 'meteor/tracker'
 import { MongoObject } from 'simpl-schema';
+import carts from './Cart';
 import {Mongo} from 'meteor/mongo';
+import CartContainer from './HOC/CartContainer';
 const StyledLink= styled(Link)`
   background-color: #3a8bcd;
   border-radius: 5px;
@@ -168,7 +170,8 @@ class PrivateHeader extends Component {
           
           
         </ul>
-       
+       <CartContainer className="w-50"></CartContainer>
+       <br></br>
         <button className="button button--link-text" onClick={() => {
           Accounts.logout();
           browserHistory.replace("/");

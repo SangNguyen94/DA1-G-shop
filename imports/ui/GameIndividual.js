@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {browserHistory} from 'react-router';
+import CartButton from './CartAdd';
 class GameIndividual extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +14,23 @@ class GameIndividual extends Component {
     }
 
 
+    bought(){
+        let bought=false;
+        this.props.gameBought.map(game=>{
+            if(Meteor.userId()===game)
+            {
+                bought=true;
+            }
+        })
+        if(bought)
+        {
+            return <div></div>
+        }
+        else{
+            return <CartButton gameId={this.props.gameId}></CartButton>
 
+        }
+    }
 
    
     render() {
@@ -74,13 +91,9 @@ class GameIndividual extends Component {
                         <img src={this.props.gameUrl} alt={this.props.gameName} />
                     </div>
                     <div className="product-body">
-                        <h3 className="product-price">${this.props.gamePrice-((this.props.gamePrice*this.props.gameSale)/100)}   <del className="product-old-price">  ${this.props.gamePrice}</del></h3>
+                        <h3 className="product-price">${(this.props.gamePrice-((this.props.gamePrice*this.props.gameSale)/100)).toFixed(2)}   <del className="product-old-price">  ${this.props.gamePrice}</del></h3>
                         <h2 className="product-name"><a href="#">{this.props.gameName}</a></h2>
-                        <div className="product-btns">
-                            {/* <button className="main-btn icon-btn"><i className="fa fa-heart"></i></button>
-                            <button className="main-btn icon-btn"><i className="fa fa-exchange"></i></button> */}
-                            <button className="primary-btn add-to-cart"><i className="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
+                            {this.bought()}
                     </div>
                 </div>
             </div>
@@ -144,9 +157,8 @@ class GameIndividual extends Component {
                         <h3 className="product-price">${this.props.gamePrice}</h3>
                         <h2 className="product-name">{this.props.gameName}</h2>
                         <div className="product-btns">
-                            {/* <button className="main-btn icon-btn"><i className="fa fa-heart"></i></button>
-                            <button className="main-btn icon-btn"><i className="fa fa-exchange"></i></button> */}
-                            <button className="primary-btn add-to-cart"><i className="fa fa-shopping-cart"></i> Add to Cart</button>
+                            
+                        {this.bought()}
                         </div>
                     </div>
                 </div>
@@ -168,6 +180,7 @@ GameIndividual.propTypes = {
     gamePrice: PropTypes.number.isRequired,
     gameSale: PropTypes.number,
     gameUrl:PropTypes.string,
-    gameId: PropTypes.string.isRequired
+    gameId: PropTypes.string.isRequired,
+    gameBought:PropTypes.array,
 }
 export default GameIndividual;

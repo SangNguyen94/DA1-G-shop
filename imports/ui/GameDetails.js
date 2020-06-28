@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import PrivateHeader from './PrivateHeader';
 import { games } from '../api/games'
 import { UserFiles } from '../Ser/UserFiles';
+import CartButton from './CartAdd';
+import { GameFiles } from '../Ser/GameFiles';
 class GameDetails extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             game: [],
+            gameID:'',
             gameName: '',
             gamePrice: 0,
             gameCompany: '',
@@ -16,6 +19,8 @@ class GameDetails extends Component {
             gameSales: 0,
             gameTags: '',
             gameUrl: '',
+            gameDownload:'',
+            gameBought:[]
         };
 
 
@@ -29,7 +34,7 @@ class GameDetails extends Component {
             if (gh.ready()) {
                 const game = games.findOne({ _id: this.props.params.gameID });
                 console.log(game);
-                this.setState({ game: game, gameName: game.name, gamePrice: game.price, gameCompany: game.company, gameDescr: game.description, gameSales: game.sale, gameTags: game.tags });
+                this.setState({ game: game,gameID:game._id, gameName: game.name, gamePrice: game.price, gameCompany: game.company, gameDescr: game.description, gameSales: game.sale, gameTags: game.tags,gameBought:game.bought});
             }
 
             // this.state.gameName = game.name;
@@ -41,11 +46,17 @@ class GameDetails extends Component {
 
         });
         this.fileTracker = Tracker.autorun(() => {
-            const fh = Meteor.subscribe('files.all');
-            if (fh.ready()) {
-                let link = UserFiles.findOne({ "meta.id": this.props.params.gameID }).link();
+            const fh= Meteor.subscribe('files.all')
+            const gh = Meteor.subscribe('GF.all');
+            if (gh.ready()) {
+                let link = GameFiles.findOne({ "meta.id": this.props.params.gameID }).link();
                 // this.state.gameUrl = gameUrl;
-                this.setState({ gameUrl: link });
+                this.setState({ gameDownload: link });
+            }
+            if(fh.ready())
+            {
+                let linkI=UserFiles.findOne({"meta.id":this.props.params.gameId}).link();
+                this.setState({gameUrl:linkI});
             }
 
         })
@@ -55,7 +66,24 @@ class GameDetails extends Component {
         this.gameTracker.stop();
     }
 
-
+    boughtOrBuy(){
+        let bought=false;
+        this.state.gameBought.map(game=>{
+            console.log(Meteor.userId(),game);
+            if(Meteor.userId()===game)
+            {
+                bought=true;
+            }
+        })
+        if(bought)
+        {
+          return  <a href={this.state.gameDownload} className="btn btn-outline btn-primary btn-md" target="_blank">Download</a>
+         
+        }
+        else{
+            return <CartButton gameId={this.state.gameID}></CartButton>
+        }
+    }
 
     render() {
         console.log(this.state.game);
@@ -105,27 +133,21 @@ class GameDetails extends Component {
                                         <span className="sale">-{this.state.gameSales}%</span>
                                     </div>
                                     <h2 className="product-name">{this.state.gameName}</h2>
-                                    <h3 className="product-price">${this.state.gamePrice - (this.state.gamePrice * this.state.gameSales / 100)}    <del className="product-old-price">${this.state.gamePrice}</del></h3>
+                                    <h3 className="product-price">${(this.state.gamePrice - (this.state.gamePrice * this.state.gameSales / 100)).toFixed(2)}    <del className="product-old-price">${this.state.gamePrice}</del></h3>
 
                                     <p><strong>Game Company:</strong> {this.state.gameCompany}</p>
                                     <p><strong>Game tags: </strong> {this.state.gameTags}</p>
                                     <p>{this.state.gameDescr}</p>
+                                    {this.boughtOrBuy()}
 
-
-                                    <div className="product-btns">
-                                        
-                                        <span className="text-uppercase">Buy this awesome game now! </span>
-
-                                        <button className="primary-btn add-to-cart pull-right"><i className="fa fa-shopping-cart"></i> Add to Cart</button>
-
-                                    </div>
+                                   
                                 </div>
                             </div>
                             <div className="col-md-12">
                                 <div className="product-tab">
                                     <ul className="tab-nav">
-                                        <li className="active"><a data-toggle="tab" >Game Info</a></li>
-                                        <li><a data-toggle="tab" href="#tab1">Description</a></li>
+                                        <li className="active"><a data-toggle="tab" href="#tab" >Game Info</a></li>
+                                        <li><a data-toggle="tab1" href="#tab1">Description</a></li>
                                         
                                     </ul>
                                     <div className="tab-content">
@@ -211,8 +233,8 @@ class GameDetails extends Component {
                                             <span className="text-uppercase">Buy this awesome game now! </span>
 
                                         </div>
-                                        <button className="primary-btn add-to-cart pull-right"><i className="fa fa-shopping-cart"></i> Add to Cart</button>
-
+                                        {/* <CartButton gameId={this.state.gameID}></CartButton> */}
+                                        {this.boughtOrBuy()}
                                     </div>
                                 </div>
                             </div>

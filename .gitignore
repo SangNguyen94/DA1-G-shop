@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .npm
 .DS_Store
 .eslintcache
@@ -7,6 +6,3 @@ junk/
 run-dev.sh
 nohup.out
 settings.json
-=======
-node_modules/
->>>>>>> 42a8b68d5aa6f2b27842834533303a6f8711c8f6

@@ -6,6 +6,8 @@ import {publisher} from '.././imports/api/publisher'
 import {games} from '../imports/api/games'
 import {gamesList} from '../imports/api/gamesList'
 import shortid from 'shortid';
+import { cart } from '../imports/api/cart';
+import { order } from '../imports/api/order';
 //Publisher
 
 Meteor.methods({
@@ -137,7 +139,7 @@ Meteor.methods({
         price:Number(price),
         description:descr,
         company:pubCompany,
-        bought:'',
+        bought:[],
         userId: this.userId,
         updatedAt: moment().valueOf()
       });
@@ -205,4 +207,145 @@ Meteor.methods({
           }
         });
       }
+});
+//cart
+Meteor.methods({
+  'cart.insert'()
+  {
+    if(!this.userId)
+    {
+      throw new Meteor.Error('please log in');
+    }
+    return cart.insert({
+      userId:this.userId,
+      products:[],
+      updatedAt: moment().valueOf()
+    });
+  },
+  
+  'cart.add'(userID,gameID)
+    {
+      if(!this.userId)
+      {
+        throw new Meteor.Error('please log in');
+      }
+      new SimpleSchema({
+        gameID: {
+          type: String,
+          min: 1
+        }
+
+      }).validate({
+        gameID
+      });
+      cart.update({userId:userID},{
+        $addToSet:{
+          products:gameID
+        }
+    
+      });
+    },
+    'cart.remove'(userID)
+    {
+      if (!this.userId) {
+        throw new Meteor.Error('not-authorized');
+      }
+
+      new SimpleSchema({
+        userID: {
+          type: String,
+          min: 1
+        }
+      }).validate({ userID });
+
+      cart.update({ userId:userID },{$set:{products:[]}});
+
+    },
+    'cart.remove.item'(userID,gameID)
+    {
+      if (!this.userId) {
+        throw new Meteor.Error('not-authorized');
+      }
+
+      new SimpleSchema({
+        userID: {
+          type: String,
+          min: 1
+        }
+      }).validate({ userID });
+
+      cart.update({ userId:userID },{$pull:{products:gameID}});
+    }
+});
+Meteor.methods({
+  'order.insert'(product,paypal,bank)
+  {
+    // check(paypal,Boolean);
+    // check(bank,Boolean);
+    if(!this.userId)
+    {
+      throw new Meteor.Error('please log in');
+    }
+    return order.insert({
+      userId:this.userId,
+      products:product,
+      paypal:paypal,
+      bank:bank,
+      updatedAt: moment().valueOf()
+    });
+  },
+  
+  'order.add'(userID,gameID)
+    {
+      if(!this.userId)
+      {
+        throw new Meteor.Error('please log in');
+      }
+      new SimpleSchema({
+        gameID: {
+          type: String,
+          min: 1
+        }
+
+      }).validate({
+        gameID
+      });
+      order.update({userId:userID},{
+        $addToSet:{
+          products:gameID
+        }
+    
+      });
+    },
+    'order.remove'(userID)
+    {
+      if (!this.userId) {
+        throw new Meteor.Error('not-authorized');
+      }
+
+      new SimpleSchema({
+        userID: {
+          type: String,
+          min: 1
+        }
+      }).validate({ userID });
+
+      order.update({ userId:userID },{$set:{products:[]}});
+
+    },
+    'order.remove.item'(userID,gameID)
+    {
+      if (!this.userId) {
+        throw new Meteor.Error('not-authorized');
+      }
+
+      new SimpleSchema({
+        userID: {
+          type: String,
+          min: 1
+        }
+      }).validate({ userID });
+
+      order.update({ userId:userID },{$pull:{products:gameID}});
+    }
 });

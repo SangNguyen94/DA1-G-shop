@@ -5,7 +5,7 @@ import PrivateHeader from './PrivateHeader';
 import { Router,Route,Link,browserHistory } from 'react-router';
 import styled from 'styled-components';
 import {publisher} from '../api/publisher';
-import GameDisplayContainer from './GameDisplayContainer';
+import GameDisplayContainer from './HOC/GameDisplayContainer';
 
 // const StyledLink= styled(Link)`
 //   background-color: #3a8bcd;

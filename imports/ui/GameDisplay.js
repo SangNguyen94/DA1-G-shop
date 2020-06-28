@@ -47,6 +47,7 @@ export default class GameDisplay extends Component {
             gameId={aFile._id}
             gamePrice={aFile.price}
             gameSale={aFile.sale}
+            gameBought={aFile.bought}
           />
         </div>
       })
