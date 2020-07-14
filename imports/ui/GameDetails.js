@@ -30,9 +30,9 @@ class GameDetails extends Component {
 
         this.gameTracker = Tracker.autorun(() => {
             const gh = Meteor.subscribe('games');
-
+            let game;
             if (gh.ready()) {
-                const game = games.findOne({ _id: this.props.params.gameID });
+                 game = games.findOne({ _id: this.props.params.gameID });
                 console.log(game);
                 this.setState({ game: game,gameID:game._id, gameName: game.name, gamePrice: game.price, gameCompany: game.company, gameDescr: game.description, gameSales: game.sale, gameTags: game.tags,gameBought:game.bought});
             }
@@ -55,7 +55,7 @@ class GameDetails extends Component {
             }
             if(fh.ready())
             {
-                let linkI=UserFiles.findOne({"meta.id":this.props.params.gameId}).link();
+                let linkI=UserFiles.findOne({"meta.id":this.props.params.gameID}).link();
                 this.setState({gameUrl:linkI});
             }
 

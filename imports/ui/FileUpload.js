@@ -52,7 +52,7 @@ export default class FileUploadComponent extends Component {
             meta: {
               
               locator: self.props.fileLocator,
-              userId: Meteor.userId() // Optional, used to check on server for file tampering
+              // userId: Meteor.userId() // Optional, used to check on server for file tampering
             },
             streams: 'dynamic',
             chunkSize: 'dynamic',
@@ -155,7 +155,7 @@ export default class FileUploadComponent extends Component {
         <div className="row">
           <div className="col-md-12">
               
-              <p>Upload your game thumbnail</p>
+              <p>Upload your game thumbnail(one file only)</p>
               <div className="custom-file">
               <input name="file"  type="file" className="custom-file-input" id="fileInput" disabled={this.state.inProgress} ref="fileinput" onChange={this.uploadIt}  />
                 <label className="custom-file-label" htmlFor="fileInput">Choose file</label>

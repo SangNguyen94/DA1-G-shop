@@ -17,7 +17,7 @@ export default class AddPublisher extends React.Component {
   }
   onSubmit(e) {
     e.preventDefault();
-
+    
     let pubName= this.refs.name.value.trim();
     let pubCompany= this.refs.company.value.trim();
     let descr= this.refs.descr.value.trim();
@@ -54,10 +54,10 @@ export default class AddPublisher extends React.Component {
             <link rel="stylesheet" href="/assets/css/owl.css"/>
             <link rel="stylesheet" href="/assets/css/flex-slider.css"/>
       
-            <PrivateHeader >
+            <PrivateHeader preTitle="Welcome game publisher!" >
 
             </PrivateHeader>
-            <div id="pre-header">
+            {/* <div id="pre-header">
               
                 
                   <div className="col-md-12">
@@ -66,7 +66,7 @@ export default class AddPublisher extends React.Component {
                 
               
             </div>
-        
+         */}
         
              
              

@@ -11,7 +11,7 @@ Meteor.publish('files.avatar',function(){
   let selector;
   if (this.userId) {
     selector = {
-    'meta.userId': this.userId
+    owner: this.userId
     };
   } 
 

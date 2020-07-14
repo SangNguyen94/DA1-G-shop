@@ -10,7 +10,8 @@ import PrivateHeader from './PrivateHeader';
 import AvatarUploadContainer from './AvatarUploadComponent';
 import OrderReview from './OrderReview';
 import OrderContainer from './HOC/OrderContainer';
-export default class checkout extends React.Component {
+import GameDisplayOwnerContainer from './HOC/GameDisplayOwnerContainer';
+export default class Library extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,40 +34,17 @@ export default class checkout extends React.Component {
                 <div className="section w-100">
 
                     <div className="container w-100">
+                        <GameDisplayOwnerContainer title="Games you owned" publish={false}>
 
-                        <div className="row w-100">
-                            <form id="checkout-form" className="clearfix w-100">
+                        </GameDisplayOwnerContainer>
+                    
+                    </div>
+                    <div className="container w-100">
+                    <GameDisplayOwnerContainer title="Games you published" publish={true}>
 
-                                <div className="payments-methods">
-                                    <div className="section-title">
-                                        <h4 className="title">Payments Methods</h4>
-                                    </div>
-                                    <div className="input-checkbox">
-                                        <input type="radio" name="payments" id="payments-1" checked />
-                                        <label htmlFor="payments-1">Direct Bank Transfer</label>
-                                        <div className="caption">
-                                            <p>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="input-checkbox">
-                                        <input type="radio" name="payments" id="payments-3" />
-                                        <label htmlFor="payments-3">Paypal System</label>
-                                        <div className="caption">
-                                            <p>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                    </GameDisplayOwnerContainer>
 
-
-                                <div className="col-md-12">
-                                  <OrderContainer>
-
-                                  </OrderContainer>
-                                </div>
-                            </form>
-                        </div>
+                    
                     </div>
                 </div>
                 <div className="footer">

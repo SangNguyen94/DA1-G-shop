@@ -37,3 +37,5 @@ perak:markdown
 bootstrap
 dburles:collection-helpers
 tunguska:reactive-aggregate
+meteorhacks:search-source
+ostrio:meteor-root

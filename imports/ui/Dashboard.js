@@ -103,20 +103,15 @@ export default class DashBoard extends Component {
         
   
     
-    <div>
-      <PrivateHeader title="g-shop"/>
-      <div id="pre-header">
-              
-                
-                  <div className="col-md-12">
-                    <span>Welcome Gamers</span>
-                  </div>
-                
-              
-            </div>
-     </div>
+    
+      <PrivateHeader  preTitle="Welcome Gamers!"/>
+     
+     
      {this.banner()}
-     <GameDisplayContainer>
+     <GameDisplayContainer title="Latest games" sort="name">
+
+     </GameDisplayContainer>
+     <GameDisplayContainer title="Cheap games" >
 
      </GameDisplayContainer>
   </div>

@@ -2,22 +2,18 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import GameDisplay from '../GameDisplay';
+import GameOwnerDisplay from '../GameOwnerDisplay';
 import { UserFiles } from '../../Ser/UserFiles';
 import { GameFiles } from '../../Ser/GameFiles';
 import { games } from '../../api/games'
-const GameDisplayContainer = withTracker(({ title, sort }) => {
+import { gamesList } from '../../api/gamesList';
+const GameDisplayOwnerContainer = withTracker(({ title, publish }) => {
   const fh = Meteor.subscribe('files.all');
+  Meteor.subscribe('games');
   const docs = fh.ready();
-  const filesHandle = Meteor.subscribe('games');
+  const filesHandle = Meteor.subscribe('gamesList');
   const docsReadyYet = filesHandle.ready();
-  let files;
-  if (sort === 'name') {
-    files = games.find({}, {limit:5, sort: { name: 1 }  }).fetch();
-  }
-  else{
-    files = games.find({}, {limit:5, sort: { price: 1 } }).fetch();
-  }
+  let files = gamesList.find({publish:publish}).fetch();
   const images = UserFiles.find({}).fetch();
   return {
     docsReadyYet,
@@ -26,5 +22,5 @@ const GameDisplayContainer = withTracker(({ title, sort }) => {
     images,
     title
   };
-})(GameDisplay);
-export default GameDisplayContainer;
+})(GameOwnerDisplay);
+export default GameDisplayOwnerContainer;

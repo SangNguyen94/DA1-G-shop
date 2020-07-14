@@ -23,6 +23,9 @@ import AddGamesContainer from '../ui/HOC/AddGamesContainer';
 import GameDetailsContainer from '../ui/HOC/GameDetailsContainer';
 import GameDetails from '../ui/GameDetails';
 import checkout from '../ui/CheckOut';
+import Library from '../ui/Library';
+import UpdateGames from '../ui/GameUpdate';
+import SearchPage from '../ui/SearchPage';
 const unauthenticatedPages = ['/', '/signup','/login'];
 const authenticatedPages = ['/add-publisher','/publish-games','/logged'];
 
@@ -71,6 +74,9 @@ export const routes = (
     <Route path="/signup" component={Signup} />
     <Route path="/" component={DashBoardContainer}/>
     <Route path='/logged' component={DashBoardContainer}/>
+    <Route path='/library' component={Library}/>
+    <Route path='/search-games/:searchParam' component={SearchPage}/>
+    <Route path='/update-game/:gameID' component={UpdateGames} onEnter={onEnterPublisherPage}/>
     <Route path='/view-game-details/:gameID'  component={GameDetails}/>
     <Route path='/checkout' component={checkout} onEnter={onEnterPrivatePage}/>
     <Route path='/add-games' component={AddGamesContainer} onEnter={onEnterPublisherPage}/>

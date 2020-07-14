@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import AvatarUploadComponent from './AvatarUpload';
 import {UserFiles} from '../Ser/UserFiles';
 const AvatarUploadContainer =  withTracker( ( {id} ) => {
-    const filesHandle = Meteor.subscribe('files.avatar');
+    const filesHandle = Meteor.subscribe('files.all');
     const docsReadyYet = filesHandle.ready();
-    const files = UserFiles.find().fetch();
+    const files = UserFiles.find({'meta.owner':Meteor.userId()}).fetch();
   
     return {
       docsReadyYet,

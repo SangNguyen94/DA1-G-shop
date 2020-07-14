@@ -20,6 +20,7 @@ export default class OrderReview extends React.Component {
         Meteor.call('cart.remove',Meteor.userId());
         this.props.files.products.map(product=>{
             Meteor.call('games.buy',product);
+            Meteor.call('gamesList.insert',product,false);
         })
         browserHistory.push('/logged');
     }

@@ -23,6 +23,7 @@ const S3      = require('aws-sdk/clients/s3');
 const stream  = require('stream');
 const request = require('request');
 const Dropbox = require('dropbox');
+const pathToGF=Meteor.absolutePath +'/.meteor/storage/GameFiles';
 const bound   = Meteor.bindEnvironment((callback) => {
   return callback();
 });
@@ -59,7 +60,7 @@ if (dbConf && dbConf.key && dbConf.secret && dbConf.token) {
 
 export const GameFiles  = new FilesCollection({
   // debug: true,
-  storagePath: 'assets/app/uploads/uploadedFiles',
+  storagePath: pathToGF,
   collectionName: 'GameFiles',
   allowClientCode: false,
   // disableUpload: true,

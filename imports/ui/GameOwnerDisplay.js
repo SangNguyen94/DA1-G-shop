@@ -4,11 +4,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UserFiles } from '../Ser/UserFiles';
 import GameIndividual from './GameIndividual';
+import { games } from '../api/games';
 
 
 //const debug = require('debug')('demo:file');
 const Dropzone = require('react-dropzone');
-export default class GameDisplay extends Component {
+export default class GameOwnerDisplay extends Component {
   constructor(props) {
     super(props);
 
@@ -28,6 +29,7 @@ export default class GameDisplay extends Component {
 
 
   render() {
+ 
     //debug("Rendering FileUpload",this.props.docsReadyYet);
     if (this.props.files && this.props.docsReadyYet && this.props.docs) {
 
@@ -36,55 +38,35 @@ export default class GameDisplay extends Component {
       // Run through each file that the user has stored
       // (make sure the subscription only sends files owned by this user)
       let display = fileCursors.map((aFile, key) => {
+        Meteor.subscribe('games');
         // console.log('A file: ', aFile.link(), aFile.get('name'))
-        let link = UserFiles.findOne({ "meta.id": aFile._id }).link();  //The "view/download" link
-
+        let link = UserFiles.findOne({ "meta.id": aFile.gamesID }).link();  //The "view/download" link
+        let game =games.findOne({_id:aFile.gamesID});
         // Send out components that show details of each file
         return <div key={'file' + key} className="col-md-3 col-sm-6 col-xs-6">
           <GameIndividual
-            gameName={aFile.name}
+            gameName={game.name}
             gameUrl={link}
-            gameId={aFile._id}
-            gamePrice={aFile.price}
-            gameSale={aFile.sale}
-            gameBought={aFile.bought}
+            gameId={game._id}
+            gamePrice={game.price}
+            gameSale={game.sale}
+            gameBought={game.bought}
+            gameUpdate={aFile.publish}
           />
         </div>
       })
 
       return <div>
         <meta charSet="utf-8" />
-
-
-
-
-
-
-
-
-
-
-
-
         <link type="text/css" rel="stylesheet" href="/css/style.css" />
-
-
-
-
         <div className="section section-grey">
-
           <div className="container">
-
             <div className="row">
-
               <div className="col-md-12">
                 <div className="section-title">
                   <h2 className="title">{this.props.title}</h2>
                 </div>
               </div>
-
-
-
               {display}
             </div>
           </div>
@@ -95,7 +77,7 @@ export default class GameDisplay extends Component {
     else return <div>Loading games</div>;
   }
 }
-GameDisplay.propTypes = {
+GameOwnerDisplay.propTypes = {
   id: PropTypes.string,
 };
 
