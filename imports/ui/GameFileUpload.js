@@ -40,7 +40,7 @@ export default class GameFileUploadComponent extends Component {
           meta: {
             id:self.props.id,
             locator: self.props.fileLocator,
-            userId: Meteor.userId() // Optional, used to check on server for file tampering
+            //userId: Meteor.userId() // Optional, used to check on server for file tampering
           },
           streams: 'dynamic',
           chunkSize: 'dynamic',
@@ -155,7 +155,7 @@ export default class GameFileUploadComponent extends Component {
         <div className="row">
           <div className="col-md-12">
               
-              <p>Upload your game files:</p>
+              <p>Upload your game files:(one file only)</p>
               <div className="custom-file">
               <input name="file"  type="file" className="custom-file-input" id="GFInput" disabled={this.state.inProgress} ref="fileinput" onChange={this.uploadIt}  />
                 <label className="custom-file-label" htmlFor="GFInput">Choose file</label>

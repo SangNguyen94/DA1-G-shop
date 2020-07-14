@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createMatchSelector } from 'react-router-redux';
 import { matchPath } from 'react-router'
-import {UserFiles} from '../Ser/UserFiles';
-import {GameFiles} from '../Ser/GameFiles';
-import {games} from '../api/games';
-import {publisher} from '../api/publisher';
-import GameDetails from './GameDetails';
+import {UserFiles} from '../../Ser/UserFiles';
+import {GameFiles} from '../../Ser/GameFiles';
+import {games} from '../../api/games';
+import {publisher} from '../../api/publisher';
+import GameDetails from '../GameDetails';
 // const match = matchPath( {
 //   path: '/view-game-details/:gameID',
 //   exact: true,

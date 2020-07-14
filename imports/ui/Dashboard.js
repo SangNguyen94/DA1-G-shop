@@ -5,7 +5,7 @@ import PrivateHeader from './PrivateHeader';
 import { Router,Route,Link,browserHistory } from 'react-router';
 import styled from 'styled-components';
 import {publisher} from '../api/publisher';
-import GameDisplayContainer from './GameDisplayContainer';
+import GameDisplayContainer from './HOC/GameDisplayContainer';
 
 // const StyledLink= styled(Link)`
 //   background-color: #3a8bcd;
@@ -103,20 +103,15 @@ export default class DashBoard extends Component {
         
   
     
-    <div>
-      <PrivateHeader title="g-shop"/>
-      <div id="pre-header">
-              
-                
-                  <div className="col-md-12">
-                    <span>Welcome Gamers</span>
-                  </div>
-                
-              
-            </div>
-     </div>
+    
+      <PrivateHeader  preTitle="Welcome Gamers!"/>
+     
+     
      {this.banner()}
-     <GameDisplayContainer>
+     <GameDisplayContainer title="Latest games" sort="name">
+
+     </GameDisplayContainer>
+     <GameDisplayContainer title="Cheap games" >
 
      </GameDisplayContainer>
   </div>

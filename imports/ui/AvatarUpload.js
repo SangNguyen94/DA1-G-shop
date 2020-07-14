@@ -39,8 +39,9 @@ export default class AvatarUploadComponent extends Component {
           meta: {
             id:self.props.id,
             locator: self.props.fileLocator,
-            userId: Meteor.userId() // Optional, used to check on server for file tampering
+            // Optional, used to check on server for file tampering
           },
+          owner:Meteor.userId(),
           streams: 'dynamic',
           chunkSize: 'dynamic',
           allowWebWorkers: true // If you see issues with uploads, change this to false
@@ -52,8 +53,10 @@ export default class AvatarUploadComponent extends Component {
             meta: {
               
               locator: self.props.fileLocator,
-              userId: Meteor.userId() // Optional, used to check on server for file tampering
+              owner:Meteor.userId(),
+              // userId: Meteor.userId() // Optional, used to check on server for file tampering
             },
+            
             streams: 'dynamic',
             chunkSize: 'dynamic',
             allowWebWorkers: true // If you see issues with uploads, change this to false

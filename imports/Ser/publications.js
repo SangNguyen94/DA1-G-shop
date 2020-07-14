@@ -11,7 +11,7 @@ Meteor.publish('files.avatar',function(){
   let selector;
   if (this.userId) {
     selector = {
-     userId: this.userId
+    owner: this.userId
     };
   } 
 
@@ -21,14 +21,9 @@ Meteor.publish('files.all',function(){
   return UserFiles.find({}).cursor;
 })
 Meteor.publish('GF.all',function(){
-  let selector;
-  if (this.userId) {
-    selector = {
-     userId: this.userId
-    };
-  } 
+  
 
-  return GameFiles.find(selector).cursor;
+  return GameFiles.find({}).cursor;
 })
 Meteor.publish('GF.bought',function(){
   let selector;

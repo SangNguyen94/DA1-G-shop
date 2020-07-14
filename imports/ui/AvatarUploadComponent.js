@@ -7,7 +7,7 @@ import {UserFiles} from '../Ser/UserFiles';
 const AvatarUploadContainer =  withTracker( ( {id} ) => {
     const filesHandle = Meteor.subscribe('files.all');
     const docsReadyYet = filesHandle.ready();
-    const files = UserFiles.findOne({userId:this.userId}).fetch();
+    const files = UserFiles.find({'meta.owner':Meteor.userId()}).fetch();
   
     return {
       docsReadyYet,

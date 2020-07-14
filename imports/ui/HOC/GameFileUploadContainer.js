@@ -2,9 +2,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import GameFileUploadComponent from './GameFileUpload';
-import {UserFiles} from '../Ser/UserFiles';
-import {GameFiles} from '../Ser/GameFiles'
+import GameFileUploadComponent from '../GameFileUpload';
+import {UserFiles} from '../../Ser/UserFiles';
+import {GameFiles} from '../../Ser/GameFiles'
 const GameFileUploadContainer =  withTracker( ( {id} ) => {
     const filesHandle = Meteor.subscribe('GF.all');
     const docsReadyYet = filesHandle.ready();

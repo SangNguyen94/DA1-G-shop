@@ -382,8 +382,10 @@ textarea.input {
   top: 0px;
   width: 135px;
 }
-
-.header-search>form .search-btn {
+form{
+  margin:0px; padding:0px; display:inline;
+ }
+.form .search-btn {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -449,6 +451,7 @@ textarea.input {
 }
 
 .header-cart.dropdown .custom-menu {
+  z-index: 1000;
   width: 300px;
 }
 
@@ -595,7 +598,7 @@ textarea.input {
   background: #FFF;
   -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
-  z-index: 100;
+  z-index: 1000;
   top: 100%;
   min-width: 200px;
   opacity: 0;
@@ -607,6 +610,7 @@ textarea.input {
 .dropdown.show>.custom-menu {
   opacity: 1;
   visibility: visible;
+  z-index: 10000;
 }
 
 /*-- Default Dropdown --*/
@@ -649,6 +653,7 @@ textarea.input {
 }
 
 .dropdown.mega-dropdown.full-width>.custom-menu {
+  z-index: 1000;
   width: 100%;
 }
 
@@ -987,8 +992,41 @@ textarea.input {
   text-align: center;
 }
 
+.active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #f48fb1;
+  box-shadow: 0 1px 0 0 #f48fb1;
+}
+.active-pink input.form-control[type=text] {
+  border-bottom: 1px solid #f48fb1;
+  box-shadow: 0 1px 0 0 #f48fb1;
+}
+.active-purple-2 input.form-control[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #ce93d8;
+  box-shadow: 0 1px 0 0 #ce93d8;
+}
+.active-purple input.form-control[type=text] {
+  border-bottom: 1px solid #ce93d8;
+  box-shadow: 0 1px 0 0 #ce93d8;
+}
+.active-cyan-2 input.form-control[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #4dd0e1;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+}
+.active-cyan input.form-control[type=text] {
+  border-bottom: 1px solid #4dd0e1;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+}
+.active-cyan .fa, .active-cyan-2 .fa {
+  color: #4dd0e1;
+}
+.active-purple .fa, .active-purple-2 .fa {
+  color: #ce93d8;
+}
+.active-pink .fa, .active-pink-2 .fa {
+  color: #f48fb1;
+}
 .product.product-single .product-body {
-  padding: 15px;
+  padding: 0;
 }
 
 .product.product-single .product-price {
@@ -1005,7 +1043,10 @@ textarea.input {
 }
 
 .product.product-single .product-btns {
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.3s all;
