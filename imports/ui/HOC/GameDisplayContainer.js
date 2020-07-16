@@ -13,7 +13,10 @@ const GameDisplayContainer = withTracker(({ title, sort }) => {
   const docsReadyYet = filesHandle.ready();
   let files;
   if (sort === 'name') {
-    files = games.find({}, {limit:5, sort: { name: 1 }  }).fetch();
+    files = games.find({}, {limit:5, sort: { updatedAt: -1 }  }).fetch();
+  }
+  else if(sort === 'none'){
+    files = games.find({},).fetch();
   }
   else{
     files = games.find({}, {limit:5, sort: { price: 1 } }).fetch();

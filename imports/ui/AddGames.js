@@ -33,7 +33,7 @@ export default class AddGames extends React.Component {
                 alert(err);
             }
             else{
-                Meteor.call('games.buy',this.state.id);
+                Meteor.call('games.buy',this.state.id,0);
                 Meteor.call('gamesList.insert',this.state.id,true);
                 browserHistory.push('/logged');
             }

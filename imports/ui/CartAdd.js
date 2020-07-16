@@ -18,6 +18,7 @@ export default class CartButton extends React.Component {
     {
         console.log(this.props.gameId);
         Meteor.call('cart.add',Meteor.userId(),this.props.gameId);
+        alert("Add to cart successfull");
     }
     
     render() {

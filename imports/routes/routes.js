@@ -26,9 +26,13 @@ import checkout from '../ui/CheckOut';
 import Library from '../ui/Library';
 import UpdateGames from '../ui/GameUpdate';
 import SearchPage from '../ui/SearchPage';
+import Statistic from '../ui/Statistic';
+import { publisher } from '../api/publisher';
+import { any } from 'prop-types';
+import UpdateProfile from '../ui/UpdateProfile';
 const unauthenticatedPages = ['/', '/signup','/login'];
 const authenticatedPages = ['/add-publisher','/publish-games','/logged'];
-
+let isPublisher=false;
 const onEnterPublicPage = () => {
   if (Meteor.userId()) {
     browserHistory.replace('/');
@@ -39,9 +43,39 @@ const onEnterPrivatePage = () => {
     browserHistory.replace('/login');
   }
 };
+checkIsPub=()=>{
+  let pubs;
+  Tracker.autorun(()=>{
+  Meteor.subscribe('publisher');
+  
+   pubs=publisher.find({userId:Meteor.userId()}).fetch();
+       console.log(pubs);
+  });
+  
+  console.log(pubs);
+  return pubs;
+}
 const onEnterPublisherPage = () =>{
- 
-
+    let pu=checkIsPub();
+    if(Array.isArray(pu) && pu.length)
+    {
+    }
+    else
+    {
+      browserHistory.push('/logged');
+    }
+    
+    
+}
+export const onPublisher=(pubs)=>{
+  if(typeof pubs==='undefined')
+  {
+    isPublisher=false;
+  }
+  else{
+    isPublisher=true;
+  }
+  console.log(isPublisher);
 }
 export const onAuthChange = (isAuthenticated) => {
   const pathname = browserHistory.getCurrentLocation().pathname;
@@ -73,8 +107,10 @@ export const routes = (
     <Route path="/login" component={Login} />
     <Route path="/signup" component={Signup} />
     <Route path="/" component={DashBoardContainer}/>
-    <Route path='/logged' component={DashBoardContainer}/>
-    <Route path='/library' component={Library}/>
+    <Route path='/logged' component={DashBoardContainer} />
+    <Route path='/library' component={Library} onEnter={onEnterPrivatePage}/>
+    <Route path='/statistic' component={Statistic} onEnter={onEnterPublisherPage}/>
+    <Route path='/update-profile' component={UpdateProfile} onEnter={onEnterPublisherPage}/>
     <Route path='/search-games/:searchParam' component={SearchPage}/>
     <Route path='/update-game/:gameID' component={UpdateGames} onEnter={onEnterPublisherPage}/>
     <Route path='/view-game-details/:gameID'  component={GameDetails}/>

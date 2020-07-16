@@ -97,7 +97,7 @@ export default class UpdateGames extends React.Component {
                 alert(err);
             }
             else{
-                browserHistory.push('/logged');
+                browserHistory.push('/library');
             }
         });
         }

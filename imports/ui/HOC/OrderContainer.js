@@ -28,6 +28,7 @@ const OrderContainer = withTracker(({ props }) => {
             else total+=gamePrice.price;
 
         })
+        total=parseFloat(total);
     }
     total=total.toFixed(2);
     return {

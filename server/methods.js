@@ -40,7 +40,7 @@ Meteor.methods({
       publisher.remove({ _id, userId: this.userId });
 
     },
-    'publisher.update'(_id, updates) {
+    'publisher.update'(_id, name,company,descr) {
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');
       }
@@ -49,11 +49,22 @@ Meteor.methods({
         _id: {
           type: String,
           min: 1
+        },
+        name:{
+          type:String,
+          min:1
+        },
+        company:{
+          type:String,
+          min:1
+        },
+        descr:{
+          type:String,
+          min:1
         }
 
       }).validate({
-        _id,
-        ...updates
+        _id,name,company,descr
       });
 
       publisher.update({
@@ -61,8 +72,9 @@ Meteor.methods({
         userId: this.userId
       }, {
         $set: {
-          updatedAt: moment().valueOf(),
-          ...updates
+          name:name,
+          company:company,
+          description:descr
         }
       });
     }
@@ -133,6 +145,8 @@ Meteor.methods({
         description:descr,
         company:pubCompany,
         bought:[],
+        profit:0,
+        noSold:0,
         userId: this.userId,
         updatedAt: moment().valueOf()
       });
@@ -171,7 +185,7 @@ Meteor.methods({
       });
       
     },
-    'games.buy'(_id)
+    'games.buy'(_id,no)
       {
         if(!this.userId)
         {
@@ -186,7 +200,16 @@ Meteor.methods({
         }).validate({
           _id
         });
+        let money=0;
+        if(no!==0)
+        { let currGame=games.findOne({_id:_id});
+          money=(currGame.price*(100-currGame.sale))/100;
+        }
         games.update({_id},{
+          $inc: {
+            profit:money,
+            noSold:no
+          },
           $push:{
             bought:this.userId
           }
@@ -272,6 +295,7 @@ Meteor.methods({
       throw new Meteor.Error('please log in');
     }
     return order.insert({
+      _id:shortid.generate(),
       userId:this.userId,
       products:product,
       paypal:paypal,

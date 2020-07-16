@@ -39,9 +39,10 @@ export default class AvatarUploadComponent extends Component {
           meta: {
             id:self.props.id,
             locator: self.props.fileLocator,
+            owner:Meteor.userId(),
             // Optional, used to check on server for file tampering
           },
-          owner:Meteor.userId(),
+          
           streams: 'dynamic',
           chunkSize: 'dynamic',
           allowWebWorkers: true // If you see issues with uploads, change this to false
@@ -158,7 +159,7 @@ export default class AvatarUploadComponent extends Component {
         <div className="row">
           <div className="col-md-12">
               
-              <p>Upload your profile picture</p>
+              <p>Upload your profile picture(only one picture)</p>
               <div className="custom-file">
               <input name="file"  type="file" className="custom-file-input" id="fileInput" disabled={this.state.inProgress} ref="fileinput" onChange={this.uploadIt}  />
                 <label className="custom-file-label" htmlFor="fileInput">Choose file</label>
