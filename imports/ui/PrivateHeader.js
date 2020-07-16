@@ -105,11 +105,10 @@ class PrivateHeader extends Component {
             </a>
           </li>
           <li className="nav-item" style={{ color: "#0c1621" }}>
-            <a className="nav-link" href="about.html">About Us</a>
+            <a className="nav-link"  onClick={()=>browserHistory.push('/statistic')}>Statistic</a>
           </li>
           <li className="nav-item " style={{ color: "#0c1621" }}>
-            <a className="nav-link" href="contact.html">Contact Us</a>
-            
+            <a className="nav-link" onClick={()=>browserHistory.push('/update-profile')}>Profile</a>
           </li>
           
           
@@ -129,7 +128,7 @@ class PrivateHeader extends Component {
               
                 
               <div className="col-md-12">
-              <span>Welcome!</span>
+              <span style={{fontSize:"20px"}}>Welcome!</span>
               {this.searchPage()}
               </div>
             
@@ -178,10 +177,10 @@ class PrivateHeader extends Component {
                 </a>
               </li>
               <li className="nav-item" style={{ color: "#0c1621" }}>
-                <a className="nav-link" href="about.html">About Us</a>
+                <a className="nav-link" >Statistic</a>
               </li>
               <li className="nav-item " style={{ color: "#0c1621" }}>
-                <a className="nav-link" href="contact.html">Contact us</a>
+                <a className="nav-link" >Profile</a>
                 
               </li>
               
@@ -195,7 +194,7 @@ class PrivateHeader extends Component {
               
                 
               <div className="col-md-12">
-              <span>Welcome!</span>
+              <span style={{fontSize:"20px"}}>Welcome!</span>
                 {this.searchPage()}
               </div>
             

@@ -17,7 +17,7 @@ const IndividualOrderContainer =  withTracker( ( {id} ) => {
     {
          files = games.findOne({_id:id});
     }
-     const imagesLink=UserFiles.find({'meta.id':id}).fetch();
+     const imagesLink=UserFiles.findOne({'meta.id':id}).link();
     return {
       docsReadyYet,
       files,

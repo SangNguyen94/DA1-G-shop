@@ -100,22 +100,8 @@ export default class SearchPage extends React.Component {
     render() {
         return (
             <div>
-
-
-
                 <PrivateHeader >
-
                 </PrivateHeader>
-
-                {/* <div className=" pull-right">
-						<form  noValidate>
-                            <input className="input search-input" ref="search"  onChange={e => this.onTodoSearchChange(e.target.value)}  type="text" placeholder="Enter your keyword"/>
-							<button className="search-btn"><i className="fa fa-search"></i></button>
-						</form>
-                        
-                        
-
-                </div> */}
                 <div className="container pl-0 ml-0 mr-0 pr-0">
                     <input className="form-control" onChange={e => this.onTodoSearchChange(e.target.value)}  style={{height:'50px'}} id="anythingSearch" type="text" placeholder="Type something to search games again" />
                 </div>

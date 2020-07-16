@@ -34,7 +34,7 @@ class IndividualOrder extends Component {
                     <td className="price text-center"><strong>${this.props.files.price}</strong><br /></td>
                     <td className="price text-center"><strong>{this.props.files.sale}%</strong></td>
                     <td className="total text-center"><strong className="primary-color">${(this.props.files.price - (this.props.files.price * this.props.files.sale / 100)).toFixed(2)}</strong></td>
-                    <td className="text-right"><button className="main-btn icon-btn" onClick={this.CartRemove.bind(this)}><i className="fa fa-close"></i></button></td>
+                    <td className="text-right"><button className="main-btn icon-btn" onClick={this.CartRemove.bind(this)}><i className="fa fa-close fa-lg"></i></button></td>
                 </tr>
             </tbody>
         }

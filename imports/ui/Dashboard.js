@@ -114,6 +114,9 @@ export default class DashBoard extends Component {
      <GameDisplayContainer title="Cheap games" >
 
      </GameDisplayContainer>
+     <GameDisplayContainer title="all games" sort="none" >
+
+</GameDisplayContainer>
   </div>
   
  
