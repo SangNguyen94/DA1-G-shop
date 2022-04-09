@@ -35,7 +35,7 @@
     "gm": "^1.23.1",
     "jquery": "^3.5.1",
     "meteor-node-stubs": "~0.2.0",
-    "moment": "^2.25.3",
+    "moment": "^2.29.2",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^15.6.2",
